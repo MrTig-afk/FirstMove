@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@import "@fontsource/montserrat/800.css";
+@import "@fontsource/montserrat/900.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/space-mono/700.css";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-floor);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100dvh;
+  padding-bottom: calc(var(--thumb-zone) + 80px);
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(24px, 7vw, 32px);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.finger-zone {
+  height: calc(100dvh - 120px);
+  touch-action: none;
+}
+
+@keyframes toast-fade {
+  0%   { opacity: 0; transform: translateY(6px); }
+  13%  { opacity: 1; transform: translateY(0);   }
+  80%  { opacity: 1; transform: translateY(0);   }
+  100% { opacity: 0; transform: translateY(6px); }
+}

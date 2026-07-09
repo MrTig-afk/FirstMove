@@ -1,0 +1,8 @@
+fastapi
+mangum
+uvicorn
+asyncpg
+httpx
+pydantic
+python-dotenv
+slowapi

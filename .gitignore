@@ -1,0 +1,45 @@
+# env files
+.env
+.env.local
+.env*.local
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Vercel
+.vercel/
+
+# Claude
+.claude/
+CLAUDE.md
+
+# Local-only: dev certs, internal docs
+local/
+
+# Card content and seeding — the actual product value; kept local-only so the
+# public repo doesn't hand out the decks. Cards live in the database.
+content/
+scripts/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local SSL certs (mkcert)
+*.pem
+# code-review-graph
+.code-review-graph/
+.mcp.json
+.cursorrules
+.windsurfrules
+AGENTS.md
+GEMINI.md

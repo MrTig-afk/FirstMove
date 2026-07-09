@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2a164d"/>
+      <stop offset="60%" stop-color="#0a0710"/>
+      <stop offset="100%" stop-color="#050308"/>
+    </radialGradient>
+    <filter id="glowPink" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur1" />
+      <feGaussianBlur stdDeviation="12" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glowCyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur1" />
+      <feGaussianBlur stdDeviation="8" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="400" height="400" fill="#050308"/>
+  <rect x="0" y="0" width="400" height="400" fill="url(#bgGlow)"/>
+
+  <g transform="translate(200,200) scale(0.65) translate(-200,-200)">
+    <g transform="translate(200,200) rotate(-15) translate(-215,-170)">
+      <!-- Card body filled dark purple -->
+      <rect x="135" y="55" width="160" height="230" rx="12" fill="#1a0830" stroke="#e028ff" stroke-width="5" filter="url(#glowPink)"/>
+      <!-- Inner border -->
+      <rect x="147" y="67" width="136" height="206" rx="7" fill="none" stroke="#00e5ff" stroke-width="3" filter="url(#glowCyan)"/>
+      <!-- Spade symbol -->
+      <path d="M215,115 C170,160 175,195 205,195 C212,195 215,190 215,185 C215,190 218,195 225,195 C255,195 260,160 215,115 M215,185 L205,210 L225,210 Z"
+            fill="#e028ff" stroke="#e028ff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowPink)"/>
+    </g>
+  </g>
+</svg>
