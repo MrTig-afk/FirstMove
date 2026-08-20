@@ -1,0 +1,60 @@
+# CI - no tests exist yet (api/ has no test dir), so the gate is lint,
+# backend syntax, and the build. Add pytest here when a suite lands.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Backend syntax
+        run: python -m compileall -q api
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend
+        working-directory: frontend
+        run: npm ci
+
+      - name: Lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Build
+        if: always()
+        working-directory: frontend
+        run: npm run build
+
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      # Rulesets are PINNED, never `--config auto`: auto resolves the
+      # registry at run time, so a green main can go red with no code
+      # change - disqualifying for a required check.
+      - run: >
+          semgrep scan --error
+          --config p/python
+          --config p/javascript
+          --config p/secrets
