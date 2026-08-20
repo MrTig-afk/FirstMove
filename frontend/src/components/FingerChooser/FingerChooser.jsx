@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { useMultiTouch, STATES } from '../../hooks/useMultiTouch'
 
 const ACCENT_COLORS = ['#ecb2ff', '#00eefc', '#e7006e', '#FFD700', '#FF6B35', '#4169E1', '#ffb1c3']
@@ -15,7 +15,7 @@ export default function FingerChooser({ packAccent, onCardDraw, onBack }) {
 
   useEffect(() => {
     if (phase === STATES.CHOSEN) {
-      try { if ('vibrate' in navigator) navigator.vibrate(400) } catch {}
+      try { if ('vibrate' in navigator) navigator.vibrate(400) } catch { /* vibration is best-effort */ }
     }
   }, [phase])
 

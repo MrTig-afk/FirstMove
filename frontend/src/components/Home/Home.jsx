@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SOCIALS = [
   {
     href: 'https://github.com/MrTig-afk',

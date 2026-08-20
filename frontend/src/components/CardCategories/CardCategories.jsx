@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function CardCategories({ packs, onSelect, onMixStart, onBack }) {
   const [mixActive, setMixActive] = useState(false)
