@@ -24,6 +24,8 @@ CLAUDE.md
 
 # Local-only: dev certs, internal docs
 local/
+*.tex
+project_summary.txt
 
 # Card content and seeding — the actual product value; kept local-only so the
 # public repo doesn't hand out the decks. Cards live in the database.
