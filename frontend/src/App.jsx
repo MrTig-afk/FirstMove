@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { track } from '@vercel/analytics'
 import Home from './components/Home/Home'
 import CardCategories from './components/CardCategories/CardCategories'

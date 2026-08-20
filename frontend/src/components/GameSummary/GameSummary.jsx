@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function buildShareText(sessionStats, pack, isMixMode) {
   const { completed = 0, skipped = 0 } = sessionStats ?? {}
@@ -18,13 +18,13 @@ export default function GameSummary({ sessionStats, pack, isMixMode, onPlayAgain
   const handleShare = async () => {
     const text = buildShareText(sessionStats, pack, isMixMode)
     if (navigator.share) {
-      try { await navigator.share({ title: 'FirstMove Recap', text }) } catch {}
+      try { await navigator.share({ title: 'FirstMove Recap', text }) } catch { /* user cancelled share */ }
     } else {
       try {
         await navigator.clipboard.writeText(text)
         setCopyDone(true)
         setTimeout(() => setCopyDone(false), 2000)
-      } catch {}
+      } catch { /* clipboard is best-effort */ }
     }
   }
 
